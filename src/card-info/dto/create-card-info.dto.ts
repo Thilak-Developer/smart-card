@@ -1,14 +1,12 @@
 export class CreateCardInfoDto {
 
-    cardId: number;
-
     cardName: string;
 
     cardType: string;
 
-    cardAgentRefId: number;
+    cardAgentRefId: string;
 
-    cardOwnerRefId: number;
+    cardOwnerRefId: string;
 
     cardMetaDataId: string;
 

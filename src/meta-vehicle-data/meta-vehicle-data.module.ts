@@ -3,6 +3,8 @@ import { MetaVehicleDataService } from './meta-vehicle-data.service';
 import { MetaVehicleDataController } from './meta-vehicle-data.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MetaVehicleDatum, MetaVehicleDatumSchema } from './entities/meta-vehicle-datum.entity';
+import { AutoIncrement, AutoIncrementSchema } from 'src/auto-increment/auto-increment.schema';
+import { AutoIncrementService } from 'src/auto-increment/auto-increament.service';
 
 @Module({
   imports: [MongooseModule.forFeature([
@@ -11,8 +13,13 @@ import { MetaVehicleDatum, MetaVehicleDatumSchema } from './entities/meta-vehicl
       schema: MetaVehicleDatumSchema,
       collection: "MetaVehicleDatum",
     },
+    {
+      name: AutoIncrement.name,
+      schema: AutoIncrementSchema,
+      collection: "auto-increments",
+    },
   ])],
   controllers: [MetaVehicleDataController],
-  providers: [MetaVehicleDataService]
+  providers: [MetaVehicleDataService,AutoIncrementService]
 })
 export class MetaVehicleDataModule { }

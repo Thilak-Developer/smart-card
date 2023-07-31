@@ -1,7 +1,5 @@
 export class CreateMetaDatumDto {
 
-    metaId: number;
-
     metaName: string;
 
     metaType: string;

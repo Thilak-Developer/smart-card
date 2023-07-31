@@ -5,7 +5,7 @@ import { UpdateUserProfileDto } from './dto/update-user-profile.dto';
 
 @Controller('user-profile')
 export class UserProfileController {
-  constructor(private readonly userProfileService: UserProfileService) {}
+  constructor(private readonly userProfileService: UserProfileService) { }
 
   @Post()
   create(@Body() createUserProfileDto: CreateUserProfileDto) {
@@ -20,6 +20,17 @@ export class UserProfileController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.userProfileService.findOne(id);
+  }
+
+
+  @Get('explode/all')
+  findAllExploded() {
+    return this.userProfileService.findAllExploded();
+  }
+
+  @Get('explode/:id')
+  findOneExploded(@Param('id') id: string) {
+    return this.userProfileService.findOneExploded(id);
   }
 
   @Patch(':id')

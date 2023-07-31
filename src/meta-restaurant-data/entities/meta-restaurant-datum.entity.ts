@@ -5,8 +5,11 @@ export type MetaRestaurantDatumDocument = MetaRestaurantDatum & Document;
 @Schema()
 export class MetaRestaurantDatum {
 
-    @Prop({ type: String })
-    metaDataId: string;
+    @Prop({ type: Number })
+    _id: number;
+
+    @Prop({ type: Number })
+    metaDataId: number;
 
     @Prop({ type: String })
     menuName: string;

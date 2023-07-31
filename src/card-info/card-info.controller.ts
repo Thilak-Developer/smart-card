@@ -5,7 +5,7 @@ import { UpdateCardInfoDto } from './dto/update-card-info.dto';
 
 @Controller('card-info')
 export class CardInfoController {
-  constructor(private readonly cardInfoService: CardInfoService) {}
+  constructor(private readonly cardInfoService: CardInfoService) { }
 
   @Post()
   create(@Body() createCardInfoDto: CreateCardInfoDto) {
@@ -15,6 +15,16 @@ export class CardInfoController {
   @Get()
   findAll() {
     return this.cardInfoService.findAll();
+  }
+
+  @Get('explode')
+  findAllExploded() {
+    return this.cardInfoService.findAllExploded();
+  }
+
+  @Get('explode/:id')
+  findOneExploded(@Param('id') id: string) {
+    return this.cardInfoService.findOneExploded(id);
   }
 
   @Get(':id')

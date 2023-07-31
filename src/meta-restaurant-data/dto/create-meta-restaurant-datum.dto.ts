@@ -1,6 +1,6 @@
 export class CreateMetaRestaurantDatumDto {
 
-    metaDataId: string;
+    metaDataId: number;
 
     menuName: string;
 

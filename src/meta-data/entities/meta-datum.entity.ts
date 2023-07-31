@@ -6,7 +6,7 @@ export type MetaDatumDocument = MetaDatum & Document;
 export class MetaDatum {
 
     @Prop({ type: Number })
-    metaId: number;
+    _id: number;
 
     @Prop({ type: String })
     metaName: string;

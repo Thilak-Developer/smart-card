@@ -1,8 +1,8 @@
 export class CreateMetaOwnerContactDatumDto {
 
-    metaDataId: string;
+    metaDataId: number;
 
-    userRefId: string;
+    userRefId: number;
 
     addressLine: string;
 

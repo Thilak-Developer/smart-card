@@ -6,6 +6,9 @@ export type MetaVehicleDatumDocument = MetaVehicleDatum & Document;
 export class MetaVehicleDatum {
 
     @Prop({ type: Number })
+    _id: number;
+
+    @Prop({ type: Number })
     metaDataId: number;
 
     @Prop({ type: Number })

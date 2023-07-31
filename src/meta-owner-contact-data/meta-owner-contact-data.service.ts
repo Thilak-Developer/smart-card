@@ -4,13 +4,14 @@ import { UpdateMetaOwnerContactDatumDto } from './dto/update-meta-owner-contact-
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { MetaOwnerContactDatum } from './entities/meta-owner-contact-datum.entity';
-
+import { AutoIncrementService } from 'src/auto-increment/auto-increament.service';
 @Injectable()
 export class MetaOwnerContactDataService {
-  constructor(@InjectModel(MetaOwnerContactDatum.name) private metaOwnerContactModel: Model<MetaOwnerContactDatum>) { }
+  constructor(@InjectModel(MetaOwnerContactDatum.name) private metaOwnerContactModel: Model<MetaOwnerContactDatum>, private readonly autoIncrementService: AutoIncrementService) { }
 
   async create(createUserProfileDto: CreateMetaOwnerContactDatumDto) {
     const metaOwnerContact = await new this.metaOwnerContactModel(createUserProfileDto);
+    metaOwnerContact._id = await this.autoIncrementService.autoIncrementID(MetaOwnerContactDatum.name);
     return metaOwnerContact.save();
   }
 

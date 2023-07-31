@@ -3,7 +3,7 @@ import { CreateMetaRestaurantDatumDto } from './create-meta-restaurant-datum.dto
 
 export class UpdateMetaRestaurantDatumDto extends PartialType(CreateMetaRestaurantDatumDto) {
 
-    metaDataId: string;
+    metaDataId: number;
 
     menuName: string;
 

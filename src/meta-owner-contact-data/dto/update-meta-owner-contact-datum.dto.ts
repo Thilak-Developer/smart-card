@@ -3,9 +3,9 @@ import { CreateMetaOwnerContactDatumDto } from './create-meta-owner-contact-datu
 
 export class UpdateMetaOwnerContactDatumDto extends PartialType(CreateMetaOwnerContactDatumDto) {
     
-    metaDataId: string;
+    metaDataId: number;
 
-    userRefId: string;
+    userRefId: number;
 
     addressLine: string;
 

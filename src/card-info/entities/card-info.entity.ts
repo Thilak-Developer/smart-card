@@ -1,4 +1,8 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { number } from "joi";
+import mongoose, { Types } from "mongoose";
+import { MetaDatum } from "src/meta-data/entities/meta-datum.entity";
+import { UserProfile } from "src/user-profile/entities/user-profile.entity";
 
 export type CardInfoDocument = CardInfo & Document;
 
@@ -6,7 +10,7 @@ export type CardInfoDocument = CardInfo & Document;
 export class CardInfo {
 
     @Prop({ type: Number })
-    cardId: number;
+    _id: number;
 
     @Prop({ type: String })
     cardName: string;
@@ -17,11 +21,11 @@ export class CardInfo {
     @Prop({ type: String })
     cardAgentRefId: number;
 
-    @Prop({ type: String })
+    @Prop({ type: Number, ref: UserProfile.name })
     cardOwnerRefId: number;
 
-    @Prop({ type: String })
-    cardMetaDataId: string;
+    @Prop({ type: Number, ref: MetaDatum.name })
+    cardMetaDataId: number;
 
     @Prop({ type: Date, default: Date.now })
     createdAt: Date;
@@ -32,3 +36,5 @@ export class CardInfo {
 }
 
 export const CardInfoSchema = SchemaFactory.createForClass(CardInfo);
+
+

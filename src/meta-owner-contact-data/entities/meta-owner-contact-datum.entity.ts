@@ -5,11 +5,14 @@ export type MetaOwnerContactDatumDocument = MetaOwnerContactDatum & Document;
 @Schema()
 export class MetaOwnerContactDatum {
 
-    @Prop({ type: String })
-    metaDataId: string;
+    @Prop({ type: Number })
+    _id: number;
 
-    @Prop({ type: String })
-    userRefId: string;
+    @Prop({ type: Number })
+    metaDataId: number;
+
+    @Prop({ type: Number })
+    userRefId: number;
 
     @Prop({ type: String })
     addressLine: string;

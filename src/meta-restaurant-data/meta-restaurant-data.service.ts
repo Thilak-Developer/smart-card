@@ -4,13 +4,14 @@ import { UpdateMetaRestaurantDatumDto } from './dto/update-meta-restaurant-datum
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { MetaRestaurantDatum } from './entities/meta-restaurant-datum.entity';
-
+import { AutoIncrementService } from 'src/auto-increment/auto-increament.service';
 @Injectable()
 export class MetaRestaurantDataService {
-  constructor(@InjectModel(MetaRestaurantDatum.name) private metaRestaurantModel: Model<MetaRestaurantDatum>) { }
+  constructor(@InjectModel(MetaRestaurantDatum.name) private metaRestaurantModel: Model<MetaRestaurantDatum>, private readonly autoIncrementService: AutoIncrementService) { }
 
   async create(createUserProfileDto: CreateMetaRestaurantDatumDto) {
     const metaRestaurant = await new this.metaRestaurantModel(createUserProfileDto);
+    metaRestaurant._id = await this.autoIncrementService.autoIncrementID(MetaRestaurantDatum.name);
     return metaRestaurant.save();
   }
 
