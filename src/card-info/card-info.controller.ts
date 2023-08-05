@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { CardInfoService } from './card-info.service';
 import { CreateCardInfoDto } from './dto/create-card-info.dto';
 import { UpdateCardInfoDto } from './dto/update-card-info.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('card-info')
 export class CardInfoController {
@@ -13,6 +14,7 @@ export class CardInfoController {
   }
 
   @Get()
+  @UseGuards(AuthGuard())
   findAll() {
     return this.cardInfoService.findAll();
   }
